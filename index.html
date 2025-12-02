@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paws & Preferences: Find Your Favourite Kitty</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%23667eea' d='M226.5 92.9c14.3 42.9-.3 86.2-32.6 96.8s-70.1-15.6-84.4-58.5s.3-86.2 32.6-96.8s70.1 15.6 84.4 58.5zM100.4 198.6c18.9 32.4 14.3 70.1-10.2 84.1s-59.7-.9-78.7-33.3-14.3-70.1 10.2-84.1s59.7.9 78.7 33.3zM69.2 401.2C121.6 259.9 214.7 224 256 224s134.4 35.9 186.8 177.2c3.6 9.7 5.2 20.1 5.2 30.5v1.6c0 25.8-20.9 46.7-46.7 46.7c-11.5 0-22.9-1.4-34-4.2l-88-22c-15.3-3.8-31.3-3.8-46.6 0l-88 22c-11.1 2.8-22.5 4.2-34 4.2C84.9 480 64 459.1 64 433.3v-1.6c0-10.4 1.6-20.8 5.2-30.5zM421.8 282.7c-24.5 14-29.1 51.7-10.2 84.1s54.2 47.3 78.7 33.3s29.1-51.7 10.2-84.1s-54.2-47.3-78.7-33.3zM318.1 189.7c-32.3-10.6-46.9-53.9-32.6-96.8s52.1-69.1 84.4-58.5s46.9 53.9 32.6 96.8s-52.1 69.1-84.4 58.5z'/></svg>"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1><i class="fa-solid fa-cat"></i> Paws & Preferences</h1>
+        <button id="undo-btn" class="undo-btn" disabled title="Undo last swipe">
+          <i class="fa-solid fa-arrow-rotate-left"></i>
+        </button>
+        <p class="subtitle">
+          Swipe right for <i class="fa-solid fa-heart"></i>, left for
+          <i class="fa-solid fa-xmark"></i>
+        </p>
+      </div>
+
+      <div class="progress">
+        <span class="progress-text"
+          >Cats viewed: <span id="current-count">0</span>/<span id="total-count"
+            >10</span
+          ></span
+        >
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <span class="likes-count"
+          ><i class="fa-solid fa-heart"></i>
+          <span id="likes-count">0</span></span
+        >
+      </div>
+
+      <div class="swipe-container">
+        <div class="swipe-area" id="swipeArea">
+          <div class="loading" id="loading">
+            <i class="fa-solid fa-spinner fa-spin"></i> Loading cute cats...
+          </div>
+
+          <div class="swipe-overlay like-overlay" id="likeOverlay">
+            <i class="fa-solid fa-thumbs-up"></i> LIKE!
+          </div>
+          <div class="swipe-overlay dislike-overlay" id="dislikeOverlay">
+            <i class="fa-solid fa-thumbs-down"></i> NOPE!
+          </div>
+        </div>
+
+        <div class="instructions-container">
+          <div class="instructions">
+            <div
+              class="instruction"
+              id="btn-dislike"
+              role="button"
+              tabindex="0"
+            >
+              <div class="icon dislike-icon">
+                <i class="fa-solid fa-xmark"></i>
+              </div>
+              <span>Swipe Left</span>
+            </div>
+            <div class="instruction" id="btn-like" role="button" tabindex="0">
+              <div class="icon like-icon">
+                <i class="fa-solid fa-check"></i>
+              </div>
+              <span>Swipe Right</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="summary" id="summary">
+        <h2><i class="fa-solid fa-trophy"></i> Your Cat Preferences!</h2>
+        <p>
+          You liked <span id="summary-likes">0</span> out of
+          <span id="summary-total">10</span> cats
+        </p>
+
+        <div id="liked-cats-container" class="liked-cats"></div>
+
+        <div class="action-buttons">
+          <button class="btn btn-primary" id="restart-btn">
+            <i class="fa-solid fa-rotate-right"></i> Start Over
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
