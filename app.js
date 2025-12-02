@@ -92,11 +92,11 @@ class CatSwiperApp {
 
     async fetchCatImage(index) {
         try {
-            // Add cache busting to ensure different images
+            // cache busting
             const timestamp = Date.now() + index;
             const url = `https://cataas.com/cat?width=400&height=400&timestamp=${timestamp}`;
 
-            // Test if image loads
+            //test if image loads or not
             await new Promise((resolve, reject) => {
                 const img = new Image();
                 img.onload = resolve;
@@ -129,7 +129,6 @@ class CatSwiperApp {
         img.alt = `Cat ${this.currentIndex + 1}`;
         img.loading = 'eager';
 
-        // Add error handling for individual images
         img.onerror = () => {
             img.src = `https://placekitten.com/400/400?image=${this.currentIndex}`;
         };
@@ -137,19 +136,15 @@ class CatSwiperApp {
         catCard.appendChild(img);
         this.swipeArea.appendChild(catCard);
 
-        // Update progress
         this.updateProgress();
 
-        // Setup swipe events for this card
         this.setupSwipeEvents(catCard);
     }
 
     setupSwipeEvents(card) {
-        // Remove existing listeners if any
         card.removeEventListener('touchstart', this.handleTouchStart);
         card.removeEventListener('mousedown', this.handleMouseStart);
 
-        // Add new listeners with bound context
         card.addEventListener('touchstart', this.handleTouchStart.bind(this), { passive: true });
         card.addEventListener('mousedown', this.handleMouseStart.bind(this));
     }
@@ -239,7 +234,7 @@ class CatSwiperApp {
         if (!card) return;
 
         const deltaX = this.currentX - this.startX;
-        const threshold = 80; // Reduced threshold for better mobile experience
+        const threshold = 80; 
 
         if (Math.abs(deltaX) > threshold) {
             if (deltaX > 0) {
@@ -248,21 +243,18 @@ class CatSwiperApp {
                 this.handleDislike();
             }
         } else {
-            // Return to center
             card.style.transition = 'transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
             card.style.transform = 'translateX(0) rotate(0deg)';
             setTimeout(() => {
                 if (card) card.style.transition = '';
             }, 300);
         }
-
-        // Hide overlays
+        
         this.likeOverlay.style.opacity = '0';
         this.dislikeOverlay.style.opacity = '0';
     }
 
     handleLike() {
-        // Add to liked cats if not already in array
         const currentCat = this.catsData[this.currentIndex];
         if (!this.likedCats.includes(currentCat)) {
             this.likedCats.push(currentCat);
@@ -420,4 +412,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Make app available globally for debugging if needed
     window.catSwiperApp = app;
+
 });
