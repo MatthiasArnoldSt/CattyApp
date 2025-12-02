@@ -1,10 +1,8 @@
 Hello :) 
-My name is Matthias, I am one of the candidates for the Software QA Engineer position at Netizen Testing.
+My name is Matthias.
+I built a mobile-first web application where users can view a stack of cat images and express their preferences. The core interaction revolves around swiping right to "like" and left to "dislike". In addition, as required, the application fetches real-time cat data from the Cataas API and provides a summary of the user's liked cats upon completion.
 
 Link to live demo: https://matthiasarnoldst.github.io/CattyApp/  
-
-I built a mobile-first web application where users can view a stack of cat images and express their preferences. The core interaction revolves around swiping right to "like" and left to "dislike". In addition, as required, 
-the application fetches real-time cat data from the Cataas API and provides a summary of the user's liked cats upon completion.
 
 The key features include:
 - Gestural Interaction: Smooth touch and mouse-based swiping logic (Swipe Right to Like, Swipe Left to Dislike).
